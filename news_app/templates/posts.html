@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}All posts{% endblock %}
+
+{% block content %}
+<section class="block">
+    <div class="container">
+        <h1>All Posts</h1>
+        <div class="row">
+            {% for post in posts %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ post.image }}" class="card-img-top w-100" alt="{{ post.title }}">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ post.title }}</h5>
+                      <p class="card-text">{{ post.created_at }}</p>
+                      <a href="{% url 'post_detail_page' pk=post.pk %}" class="btn btn-primary">Read</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
